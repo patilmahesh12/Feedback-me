@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { LogIn, UserPlus, Loader2, Menu, X } from "lucide-react";
+import { LogIn, UserPlus, Loader2, Menu, X, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface HeroPageProps {
@@ -19,15 +19,11 @@ export default function HeroPage({ token }: HeroPageProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+    setTimeout(() => setLoading(false), 2000);
   }, []);
 
   useEffect(() => {
-    if (!loading) {
-      setPageLoaded(true);
-    }
+    if (!loading) setPageLoaded(true);
   }, [loading]);
 
   const handleLogin = () => {
@@ -79,21 +75,26 @@ export default function HeroPage({ token }: HeroPageProps) {
         </div>
       )}
 
-      {/* Professional Navbar */}
-      <nav className="bg-gradient-to-br from-indigo-100 to-[#D69ADE] shadow-sm w-full">
+      {/* Navbar */}
+      <nav className="bg-white/80 backdrop-blur shadow-sm w-full z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img src="/logo.png" alt="ClarifyEd Logo" className="h-12 w-12" />
-            <span className="text-4xl font-bold text-[#2a1631]">ClarifyEd</span>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => router.push("/")}
+              className="text-[#2a1631] hover:text-[#693382] transition-all"
+            >
+              <ArrowLeft className="h-6 w-6" />
+            </button>
+            <img src="/logo.png" alt="ClarifyEd Logo" className="h-10 w-10" />
+            <span className="text-2xl font-bold text-[#2a1631]">ClarifyEd</span>
           </div>
 
-          {/* Desktop Navigation Buttons */}
+          {/* Desktop Buttons */}
           <div className="hidden md:flex space-x-4">
             <button
               onClick={handleRegister}
-              className="flex items-center px-4 py-2 bg-[#693382] text-white rounded-md hover:bg-[#AA60C8] transition-all duration-300"
-              disabled={buttonLoading !== null}
+              className="flex items-center px-5 py-2 bg-[#693382] text-white rounded-lg hover:bg-[#814a9e] shadow-md transition-all"
+              disabled={!!buttonLoading}
             >
               {buttonLoading === "register" ? (
                 <Loader2 className="h-5 w-5 mr-2 animate-spin" />
@@ -104,8 +105,8 @@ export default function HeroPage({ token }: HeroPageProps) {
             </button>
             <button
               onClick={handleLogin}
-              className="flex items-center px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all duration-300"
-              disabled={buttonLoading !== null}
+              className="flex items-center px-5 py-2 rounded-lg text-[#693382] border border-[#693382] hover:bg-[#f3e8ff] transition-all shadow-sm"
+              disabled={!!buttonLoading}
             >
               {buttonLoading === "login" ? (
                 <Loader2 className="h-5 w-5 mr-2 animate-spin" />
@@ -116,9 +117,9 @@ export default function HeroPage({ token }: HeroPageProps) {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Icon */}
           <button
-            className="md:hidden text-gray-800 focus:outline-none"
+            className="md:hidden text-[#2a1631] focus:outline-none"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? (
@@ -129,13 +130,13 @@ export default function HeroPage({ token }: HeroPageProps) {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Dropdown */}
         {menuOpen && (
-          <div className="md:hidden flex flex-col bg-white py-4 space-y-2 shadow-md">
+          <div className="md:hidden px-4 py-4 space-y-3 bg-white shadow-md rounded-b-lg">
             <button
               onClick={handleRegister}
-              className="flex items-center px-4 py-2 bg-[#693382] text-white rounded-md hover:bg-[#AA60C8] transition-all duration-300 w-full text-center"
-              disabled={buttonLoading !== null}
+              className="flex items-center w-full justify-center px-4 py-2 bg-[#693382] text-white rounded-md hover:bg-[#814a9e] transition-all"
+              disabled={!!buttonLoading}
             >
               {buttonLoading === "register" ? (
                 <Loader2 className="h-5 w-5 mr-2 animate-spin" />
@@ -146,8 +147,8 @@ export default function HeroPage({ token }: HeroPageProps) {
             </button>
             <button
               onClick={handleLogin}
-              className="flex items-center px-4 py-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all duration-300 w-full text-center"
-              disabled={buttonLoading !== null}
+              className="flex items-center w-full justify-center px-4 py-2 text-[#693382] border border-[#693382] rounded-md hover:bg-[#f3e8ff] transition-all"
+              disabled={!!buttonLoading}
             >
               {buttonLoading === "login" ? (
                 <Loader2 className="h-5 w-5 mr-2 animate-spin" />
@@ -160,7 +161,8 @@ export default function HeroPage({ token }: HeroPageProps) {
         )}
       </nav>
 
-      <main className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+      {/* Hero Content */}
+      <main className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-10">
         <motion.div
           className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
           initial={{ opacity: 0, y: 30 }}
@@ -171,14 +173,14 @@ export default function HeroPage({ token }: HeroPageProps) {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="space-y-4 text-left md:text-left w-full md:w-[90%] md:ml-0"
+            className="space-y-6"
           >
-            <h2 className="text-4xl font-extrabold text-gray-900 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#2a1631] leading-tight">
               Elevate Learning with Personalized Feedback
             </h2>
-            <p className="text-gray-800">
+            <p className="text-lg text-gray-800">
               ClarifyEd connects students and teachers, making education more
-              interactive and engaging.
+              interactive, personalized, and engaging than ever before.
             </p>
           </motion.div>
           <motion.div
@@ -189,7 +191,7 @@ export default function HeroPage({ token }: HeroPageProps) {
             <img
               src="/heropage.jpeg"
               alt="Education"
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="w-full h-auto rounded-xl shadow-xl"
             />
           </motion.div>
         </motion.div>

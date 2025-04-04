@@ -3,7 +3,7 @@ import Feedback from '@/models/Feedback';
 import Report from '@/models/Report';
 import { NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
-import { cookies } from 'next/headers'; // Import cookies from next/headers
+import { cookies } from 'next/headers';
 
 interface DecodedToken {
   userId: string;
@@ -27,13 +27,11 @@ interface FeedbackDocument {
 
 export const dynamic = 'force-dynamic';
 
-// Teacher submits feedback
 export async function POST(request: Request) {
   try {
     await dbConnect();
     const { reportId, message } = await request.json();
 
-    // Verify teacher - using proper cookies() import
     const cookieStore = await cookies();
     const token = (await cookieStore).get('token')?.value;
     
@@ -52,8 +50,6 @@ export async function POST(request: Request) {
         { status: 403 }
       );
     }
-
-    // Get the original report with proper typing
     const report = await Report.findById(reportId).lean<{
       studentId: string;
       message: string;

@@ -72,49 +72,64 @@ export default function SendReportPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-6">Submit Report</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block mb-2">Select Teacher</label>
-          <select
-            value={teacherId}
-            onChange={(e) => setTeacherId(e.target.value)}
-            className="w-full p-2 border rounded"
-            required
-            disabled={isLoading || teachers.length === 0}
-          >
-            <option value="">
-              {teachers.length === 0
-                ? "No teachers available"
-                : "Select a teacher"}
-            </option>
-            {teachers.map((teacher) => (
-              <option key={teacher._id} value={teacher._id}>
-                {teacher.name} ({teacher.email})
+    <div className="p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
+      <div className="bg-white border border-purple-200 rounded-2xl shadow-lg p-6 sm:p-8">
+        <h1 className="text-3xl font-bold text-purple-700 mb-6 text-center sm:text-left">
+          ✍️ Submit Report
+        </h1>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Select Teacher */}
+          <div>
+            <label className="block text-sm font-medium text-purple-700 mb-2">
+              Select Teacher
+            </label>
+            <select
+              value={teacherId}
+              onChange={(e) => setTeacherId(e.target.value)}
+              className="w-full border border-purple-300 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              required
+              disabled={isLoading || teachers.length === 0}
+            >
+              <option value="">
+                {teachers.length === 0
+                  ? "No teachers available"
+                  : "Select a teacher"}
               </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label className="block mb-2">Report Message</label>
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            className="w-full p-2 border rounded"
-            rows={5}
-            required
-            disabled={isLoading}
-          />
-        </div>
-        <button
-          type="submit"
-          disabled={isLoading || teachers.length === 0}
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:bg-gray-400"
-        >
-          {isLoading ? "Submitting..." : "Submit Report"}
-        </button>
-      </form>
+              {teachers.map((teacher) => (
+                <option key={teacher._id} value={teacher._id}>
+                  {teacher.name} ({teacher.email})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Report Message */}
+          <div>
+            <label className="block text-sm font-medium text-purple-700 mb-2">
+              Report Message
+            </label>
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-full border border-purple-300 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              rows={5}
+              placeholder="Write your report here..."
+              required
+              disabled={isLoading}
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={isLoading || teachers.length === 0}
+            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2.5 rounded-lg transition-colors duration-300 disabled:bg-gray-400 cursor-pointer"
+          >
+            {isLoading ? "Submitting..." : "Submit Report"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

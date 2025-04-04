@@ -15,14 +15,18 @@ export default async function DashboardPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 p-6">
-      <h1 className="text-3xl font-extrabold mb-8 text-center bg-gradient-to-r from-[#D69ADE] to-[#AA60C8] hover:opacity-90 transition text-white rounded-lg shadow-md">
-        Dashboard
-      </h1>
+    <div className="max-w-4xl mx-auto p-6 sm:p-10 mt-10">
+      {/* Heading */}
+      <div className="text-center mb-10">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#D69ADE] to-[#AA60C8] drop-shadow-md">
+          🎯 Dashboard
+        </h1>
+      </div>
 
-      <div className="bg-gray-900/80 backdrop-blur-lg shadow-lg p-6 rounded-xl text-white">
-        <h2 className="text-2xl font-semibold mb-4 text-[#D69ADE]">
-          User Information
+      {/* User Card */}
+      <div className="bg-white border border-purple-200 rounded-2xl shadow-2xl px-6 py-8 sm:p-10">
+        <h2 className="text-2xl font-bold text-purple-700 mb-6 text-center sm:text-left">
+          👤 User Information
         </h2>
 
         <div className="space-y-4">
@@ -45,12 +49,15 @@ function UserDetail({
   highlight?: boolean;
 }) {
   return (
-    <p
-      className={`p-3 rounded-lg ${
-        highlight ? "bg-[#aa5ac9] text-white" : "bg-gray-800 text-gray-300"
+    <div
+      className={`p-4 rounded-xl text-sm sm:text-base font-medium tracking-wide ${
+        highlight
+          ? "bg-gradient-to-r from-[#AA60C8] to-[#D69ADE] text-white shadow-md"
+          : "bg-gray-100 text-gray-700"
       }`}
     >
-      <span className="font-semibold">{label}:</span> {value}
-    </p>
+      <span className="font-semibold text-gray-800">{label}:</span>{" "}
+      <span className="ml-1">{value}</span>
+    </div>
   );
 }
