@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { LogIn, UserPlus, Loader2, Menu, X, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image"; // Import the Image component
 
 interface HeroPageProps {
   token?: string;
@@ -44,10 +45,12 @@ export default function HeroPage({ token }: HeroPageProps) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#E6B2BA] to-[#D69ADE] flex items-center justify-center">
         <div className="text-center space-y-4">
-          <img
+          <Image
             src="/logo.png"
             alt="ClarifyEd Logo"
             className="h-16 w-16 mx-auto animate-bounce"
+            width={64}
+            height={64}
           />
           <div className="text-[#2a1631] text-xl font-medium">
             ClarifyEd<span className="loading-dots"></span>
@@ -85,7 +88,13 @@ export default function HeroPage({ token }: HeroPageProps) {
             >
               <ArrowLeft className="h-6 w-6" />
             </button>
-            <img src="/logo.png" alt="ClarifyEd Logo" className="h-10 w-10" />
+            <Image
+              src="/logo.png"
+              alt="ClarifyEd Logo"
+              className="h-10 w-10"
+              width={40}
+              height={40}
+            />
             <span className="text-2xl font-bold text-[#2a1631]">ClarifyEd</span>
           </div>
 
@@ -188,10 +197,13 @@ export default function HeroPage({ token }: HeroPageProps) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
           >
-            <img
+            <Image
               src="/heropage.jpeg"
               alt="Education"
               className="w-full h-auto rounded-xl shadow-xl"
+              width={800}
+              height={600}
+              priority // Important for above-the-fold images
             />
           </motion.div>
         </motion.div>

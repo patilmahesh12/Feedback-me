@@ -93,7 +93,7 @@ export default function SendReportPage() {
             <select
               value={teacherId}
               onChange={(e) => setTeacherId(e.target.value)}
-              className="w-full border border-purple-300 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full border text-black border-purple-300 rounded-lg p-3 text-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               required
               disabled={isLoading || teachers.length === 0}
             >
@@ -118,7 +118,7 @@ export default function SendReportPage() {
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className="w-full border border-purple-300 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full text-black text-md border border-purple-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
               rows={5}
               placeholder="Write your report here..."
               required

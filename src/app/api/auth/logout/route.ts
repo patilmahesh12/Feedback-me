@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
-import { headers } from 'next/headers';
+// import { headers } from 'next/headers';
 
 export async function POST() {
   try {
-    // Create response
     const response = NextResponse.json(
       { success: true, message: 'Logged out successfully' },
       { status: 200 }

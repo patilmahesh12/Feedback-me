@@ -44,7 +44,7 @@ export default function AuthForm({ type }: { type: "login" | "register" }) {
       } else {
         toast.error(data.message || "Something went wrong");
       }
-    } catch (error) {
+    } catch {
       toast.error("Network error occurred");
     }
   };
@@ -156,14 +156,20 @@ export default function AuthForm({ type }: { type: "login" | "register" }) {
           {type === "login" ? (
             <>
               Don&apos;t have an account?{" "}
-              <Link href="/register" className="text-[#D69ADE] cursor-pointer hover:underline">
+              <Link
+                href="/register"
+                className="text-[#D69ADE] cursor-pointer hover:underline"
+              >
                 Register
               </Link>
             </>
           ) : (
             <>
               Already have an account?{" "}
-              <Link href="/login" className="text-[#D69ADE] cursor-pointer hover:underline">
+              <Link
+                href="/login"
+                className="text-[#D69ADE] cursor-pointer hover:underline"
+              >
                 Login
               </Link>
             </>

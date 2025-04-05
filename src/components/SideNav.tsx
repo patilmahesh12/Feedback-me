@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 
 export default function SideNav({ role }: { role: "student" | "teacher" }) {
-  // const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,7 +33,7 @@ export default function SideNav({ role }: { role: "student" | "teacher" }) {
       } else {
         throw new Error("Logout failed");
       }
-    } catch (error) {
+    } catch {
       toast.error("Failed to logout");
     }
   };

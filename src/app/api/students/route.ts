@@ -8,7 +8,7 @@ export async function GET() {
   try {
     await dbConnect();
     
-    console.log('Fetching students from database...'); // Debug log
+    console.log('Fetching students from database...');
     
     const students = await User.find({ role: 'student' })
       .select('name email _id')

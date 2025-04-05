@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 
-const ProtectedRoute = ({ children}: { children: React.ReactNode; role?: string }) => {
+const ProtectedRoute = ({ children }: { children: React.ReactNode; role?: string }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children}: { children: React.ReactNode; role?: string 
       toast.error('You must be logged in to access this page');
       router.push('/login');
     }
-  }, []);
+  }, [router]);
 
   return <>{children}</>;
 };

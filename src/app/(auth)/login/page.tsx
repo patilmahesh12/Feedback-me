@@ -10,12 +10,9 @@ export default function LoginPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // Clear any cached data on login page
     if (typeof window !== 'undefined') {
       localStorage.removeItem('userData');
     }
-
-    // Handle redirect messages
     const error = params.get('error');
     const message = params.get('message');
     const success = params.get('success');
@@ -26,7 +23,6 @@ export default function LoginPage() {
       toast.success('Registration successful! Please login');
     }
 
-    // Verify if already logged in
     const verifyAuth = async () => {
       try {
         const res = await fetch('/api/auth/verify', {
@@ -38,7 +34,6 @@ export default function LoginPage() {
           router.push('/dashboard');
         }
       } catch (error) {
-        // Not authenticated, stay on login page
       }
     };
     
