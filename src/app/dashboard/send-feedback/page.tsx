@@ -79,11 +79,16 @@ export default function SendFeedbackPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 px-6 sm:px-10">
-      {/* Header */}
-      <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-8 bg-gradient-to-r from-[#D69ADE] to-[#AA60C8] text-transparent bg-clip-text">
-        ✨ Provide Feedback
-      </h1>
+    <div className="p-4 sm:p-6 md:p-8 max-w-6xl mx-auto">
+      {/* Feedback Heading (Like Dashboard style) */}
+      <div className="mb-8 text-left">
+        <h1 className="text-3xl sm:text-4xl font-bold text-purple-700 flex items-center gap-2">
+          <span className="text-black">✨</span> Provide Feedback
+        </h1>
+        <p className="text-gray-500 mt-2">
+          Submit your feedback for student reports.
+        </p>
+      </div>
 
       {isLoading && reports.length === 0 ? (
         <div className="text-center text-gray-500 py-8">Loading reports...</div>
@@ -121,7 +126,7 @@ export default function SendFeedbackPage() {
           {selectedReport && (
             <div className="bg-gray-100 border border-purple-200 p-4 rounded-xl shadow-sm">
               <h3 className="text-sm font-semibold text-purple-700 mb-2">
-                📝 Original Report
+                <span className="text-black">📝</span> Original Report
               </h3>
               <p className="text-gray-700">
                 {reports.find((r) => r._id === selectedReport)?.message}
@@ -143,15 +148,13 @@ export default function SendFeedbackPage() {
               disabled={isLoading}
             />
           </div>
-
-          {/* Submit Button */}
           <button
             type="submit"
             disabled={isLoading}
             className={`w-full py-3 rounded-xl font-semibold transition ${
               isLoading
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-gradient-to-r from-[#AA60C8] to-[#D69ADE] text-white hover:opacity-90 shadow-lg"
+                : "bg-gradient-to-r from-[#AA60C8] to-[#D69ADE] text-white hover:opacity-90 shadow-lg cursor-pointer"
             }`}
           >
             {isLoading ? "Submitting..." : "Submit Feedback"}

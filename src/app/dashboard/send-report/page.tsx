@@ -72,12 +72,18 @@ export default function SendReportPage() {
   };
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 max-w-2xl mx-auto">
-      <div className="bg-white border border-purple-200 rounded-2xl shadow-lg p-6 sm:p-8">
-        <h1 className="text-3xl font-bold text-purple-700 mb-6 text-center sm:text-left">
-          ✍️ Submit Report
-        </h1>
+    <div className="p-4 sm:p-6 md:p-8 max-w-6xl mx-auto">
+      {/* Title positioned above the form, aligned like Feedback Overview */}
+      <div className="mb-8 text-center sm:text-left">
+        <h1 className="text-3xl font-bold text-purple-700">✍️ Submit Report</h1>
+        <p className="text-gray-500 mt-2">
+          Provide details about your report and submit it to the respective
+          teacher.
+        </p>
+      </div>
 
+      {/* Main form container */}
+      <div className="bg-white border border-purple-200 rounded-2xl shadow-lg p-6 sm:p-8 max-w-2xl mx-auto">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Select Teacher */}
           <div>

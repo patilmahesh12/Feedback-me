@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 
-const ProtectedRoute = ({ children, role }: { children: React.ReactNode; role?: string }) => {
+const ProtectedRoute = ({ children}: { children: React.ReactNode; role?: string }) => {
   const router = useRouter();
 
   useEffect(() => {

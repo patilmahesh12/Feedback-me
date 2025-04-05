@@ -146,7 +146,7 @@ export default function AuthForm({ type }: { type: "login" | "register" }) {
 
           <button
             type="submit"
-            className="w-full py-3 rounded-lg font-semibold bg-gradient-to-r from-[#D69ADE] to-[#AA60C8] hover:opacity-90 transition shadow-md"
+            className="w-full py-3 rounded-lg font-semibold bg-gradient-to-r from-[#D69ADE] to-[#AA60C8] hover:opacity-90 transition shadow-md cursor-pointer"
           >
             {type === "login" ? "Login" : "Register"}
           </button>
@@ -156,14 +156,14 @@ export default function AuthForm({ type }: { type: "login" | "register" }) {
           {type === "login" ? (
             <>
               Don&apos;t have an account?{" "}
-              <Link href="/register" className="text-[#D69ADE] hover:underline">
+              <Link href="/register" className="text-[#D69ADE] cursor-pointer hover:underline">
                 Register
               </Link>
             </>
           ) : (
             <>
               Already have an account?{" "}
-              <Link href="/login" className="text-[#D69ADE] hover:underline">
+              <Link href="/login" className="text-[#D69ADE] cursor-pointer hover:underline">
                 Login
               </Link>
             </>

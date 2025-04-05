@@ -2,20 +2,19 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { toast } from "react-hot-toast";
 import {
   LogOut,
   LayoutDashboard,
   Send,
   Menu,
-  X,
   BookOpen,
   MessageSquare,
 } from "lucide-react";
 
 export default function SideNav({ role }: { role: "student" | "teacher" }) {
-  const router = useRouter();
+  // const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -70,14 +69,6 @@ export default function SideNav({ role }: { role: "student" | "teacher" }) {
             <h1 className="text-2xl text-[#aa5ac9] font-bold text-center">
               Feedback System
             </h1>
-
-            {/* Close Button - shown only on mobile when open */}
-            <button
-              className="md:hidden absolute right-0 top-0 mt-1 text-gray-400 hover:text-white"
-              onClick={() => setIsOpen(false)}
-            >
-              <X size={22} />
-            </button>
           </div>
 
           {/* Nav Items */}
@@ -134,7 +125,7 @@ export default function SideNav({ role }: { role: "student" | "teacher" }) {
         <div className="mt-6">
           <button
             onClick={handleLogout}
-            className="flex items-center justify-center gap-3 w-full p-3 bg-gradient-to-r from-[#D69ADE] to-[#aa5ac9] hover:opacity-90 transition text-white font-semibold rounded-lg shadow-md"
+            className="flex items-center justify-center gap-3 w-full p-3 bg-gradient-to-r from-[#D69ADE] to-[#aa5ac9] hover:opacity-90 transition text-white font-semibold rounded-lg shadow-md cursor-pointer"
           >
             <LogOut size={18} /> Logout
           </button>

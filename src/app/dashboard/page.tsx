@@ -15,12 +15,15 @@ export default async function DashboardPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 sm:p-10 mt-10">
-      {/* Heading */}
-      <div className="text-center mb-10">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#D69ADE] to-[#AA60C8] drop-shadow-md">
-          🎯 Dashboard
+    <div className="p-4 sm:p-6 md:p-8 max-w-6xl mx-auto">
+      {/* Dashboard Heading (Same as Feedback Overview) */}
+      <div className="mb-8 text-left">
+        <h1 className="text-3xl sm:text-4xl font-bold text-purple-700 flex items-center gap-2">
+          <span className="text-black">🎯</span> Dashboard
         </h1>
+        <p className="text-gray-500 mt-2">
+          Welcome to your personalized dashboard.
+        </p>
       </div>
 
       {/* User Card */}
@@ -52,7 +55,7 @@ function UserDetail({
     <div
       className={`p-4 rounded-xl text-sm sm:text-base font-medium tracking-wide ${
         highlight
-          ? "bg-gradient-to-r from-[#AA60C8] to-[#D69ADE] text-white shadow-md"
+          ? "bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-md"
           : "bg-gray-100 text-gray-700"
       }`}
     >

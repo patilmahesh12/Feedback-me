@@ -1,17 +1,15 @@
 import { dbConnect } from '../../lib/dbConnect';
 import Report from '@/models/Report';
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import jwt from 'jsonwebtoken';
 
 export const dynamic = 'force-dynamic';
 
-// Student submits report
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     await dbConnect();
     const { teacherId, message } = await request.json();
 
-    // Verify student
     const token = request.cookies.get('token')?.value;
     if (!token) {
       return NextResponse.json(
@@ -54,12 +52,10 @@ export async function POST(request: Request) {
   }
 }
 
-// Teacher gets student reports
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   try {
     await dbConnect();
 
-    // Verify teacher
     const token = request.cookies.get('token')?.value;
     if (!token) {
       return NextResponse.json(

@@ -8,7 +8,8 @@ import jwt from 'jsonwebtoken';
 export async function GET() {
   try {
     await dbConnect();
-    const cookieStore = cookies();
+
+    const cookieStore =await cookies();
     const token = cookieStore.get('token')?.value;
 
     if (!token) {
@@ -23,7 +24,6 @@ export async function GET() {
       role: string;
     };
 
-    // Only teachers can view reports
     if (decoded.role !== 'teacher') {
       return NextResponse.json(
         { message: 'Only teachers can view reports' },
@@ -31,6 +31,7 @@ export async function GET() {
       );
     }
 
+    // Fetch reports related to this teacher
     const reports = await Report.find({ teacherId: decoded.userId })
       .populate('studentId', 'name email')
       .sort({ createdAt: -1 });
