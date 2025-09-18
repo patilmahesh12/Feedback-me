@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { LogIn, UserPlus, Loader2, Menu, X, ArrowLeft } from "lucide-react";
+import { LogIn, UserPlus, Loader2, Menu, X} from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image"; // Import the Image component
 
@@ -86,7 +86,6 @@ export default function HeroPage({ token }: HeroPageProps) {
               onClick={() => router.push("/")}
               className="text-[#2a1631] hover:text-[#693382] transition-all"
             >
-              <ArrowLeft className="h-6 w-6" />
             </button>
             <Image
               src="/logo.png"

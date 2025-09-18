@@ -34,6 +34,7 @@ export default function LoginPage() {
           router.push('/dashboard');
         }
       } catch (error) {
+        console.error('Error verifying authentication:', error);
       }
     };
     
